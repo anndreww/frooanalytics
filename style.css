@@ -23,7 +23,7 @@ body {
 
 .brand-section { margin-bottom: 3rem; }
 .uni-logos { display: flex; gap: 10px; margin-bottom: 20px; }
-.brand-img { height: 40px; width: auto; filter: grayscale(1) brightness(2); }
+.brand-img { height: 40px; width: auto; object-fit: contain; }
 .logo { font-size: 1.4rem; font-weight: 800; color: var(--primary); }
 .logo span { color: white; }
 
