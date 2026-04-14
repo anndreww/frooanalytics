@@ -1,115 +1,83 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="ro">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.4">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SAD FrooFinancial | Maria Alexia</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-<p class="p1">&lt;!DOCTYPE html&gt;</p>
-<p class="p1">&lt;html lang="ro"&gt;</p>
-<p class="p1">&lt;head&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;FrooFinancial | Maria Alexia&lt;/title&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;link rel="stylesheet" href="style.css"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="https://cdn.jsdelivr.net/npm/chart.js"&gt;&lt;/script&gt;</p>
-<p class="p1">&lt;/head&gt;</p>
-<p class="p1">&lt;body&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="container"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;aside class="sidebar"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="brand-section"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="uni-logos"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;img src="logo_facultate.png" alt="Facultate" class="brand-img"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;img src="logo_froo.png" alt="Froo" class="brand-img"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="logo"&gt;Froo&lt;span&gt;Financial&lt;/span&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><span class="Apple-converted-space">            </span></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;nav class="menu"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="nav-item active" onclick="showPage('dashboard')"&gt;📊 Dashboard Analiză&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="nav-item" onclick="showPage('altman')"&gt;📉 Model Altman Z-Score&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="nav-item" onclick="showPage('raport')"&gt;📋 Documentație&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/nav&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="sidebar-footer"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;&lt;strong&gt;STUDENT:&lt;/strong&gt;&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;Gogoreanu Maria Alexia&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;CIG 2026&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/aside&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;main class="content"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="page-dashboard" class="page active"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;header class="header"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="badge"&gt;SISTEM DE ASISTARE A DECIZIEI (SAD)&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h1&gt;Managementul Performanței&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;Introduceți datele financiare pentru Froo România&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/header&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;section class="glass-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="grid-inputs"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="input-field"&gt;&lt;label&gt;Cifra Afaceri&lt;/label&gt;&lt;input type="number" id="ca" value="1250000"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="input-field"&gt;&lt;label&gt;Active Totale&lt;/label&gt;&lt;input type="number" id="at" value="1000000"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="input-field"&gt;&lt;label&gt;Active Circulante&lt;/label&gt;&lt;input type="number" id="ac" value="450000"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="input-field"&gt;&lt;label&gt;Stocuri&lt;/label&gt;&lt;input type="number" id="stoc" value="280000"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="input-field"&gt;&lt;label&gt;Datorii Curente&lt;/label&gt;&lt;input type="number" id="dts" value="210000"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="input-field"&gt;&lt;label&gt;Profit Net&lt;/label&gt;&lt;input type="number" id="pn" value="85000"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="input-field"&gt;&lt;label&gt;Capitaluri Proprii&lt;/label&gt;&lt;input type="number" id="cp" value="400000"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="input-field"&gt;&lt;label&gt;Datorii Totale&lt;/label&gt;&lt;input type="number" id="dt" value="600000"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="input-field"&gt;&lt;label&gt;Amortizare&lt;/label&gt;&lt;input type="number" id="amort" value="15000"&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button class="btn-primary" onclick="calculeaza()"&gt;Generează Analiza Diagnostic&lt;/button&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/section&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;section id="results" class="results-area" style="display:none;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="kpi-row"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="kpi-card"&gt;&lt;span class="kpi-title"&gt;Z-Score&lt;/span&gt;&lt;div class="kpi-value" id="val-altman"&gt;0&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="kpi-card"&gt;&lt;span class="kpi-title"&gt;CAF (RON)&lt;/span&gt;&lt;div class="kpi-value" id="val-caf"&gt;0&lt;/div&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="visual-row"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="glass-card"&gt;&lt;table class="data-table"&gt;&lt;tbody id="table-content"&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="glass-card chart-container"&gt;&lt;canvas id="mainChart"&gt;&lt;/canvas&gt;&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/section&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="page-altman" class="page" style="display:none;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h1&gt;Modelul de Insolverță Altman (Z-Score)&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="glass-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;Modelul Altman utilizat în acest SAD este adaptat pentru companii necotate:&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;code style="color: var(--primary); display:block; padding: 20px; background: rgba(0,0,0,0.3); border-radius: 10px;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>Z = 0.717X1 + 0.847X2 + 3.107X3 + 0.420X4 + 0.998X5</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/code&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="altman-breakdown" style="margin-top: 20px;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;p&gt;Apasă "Calculează" în Dashboard pentru a vedea analiza aici.&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p2"><br></p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="page-raport" class="page" style="display:none;"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;h1&gt;Documentație Sistem&lt;/h1&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="glass-card"&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;h3&gt;Descriere Tehnică&lt;/h3&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;Acest SAD a fost dezvoltat pentru a monitoriza indicatorii de performanță ai rețelei Froo România. Sistemul utilizează:&lt;/p&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;&lt;strong&gt;Frontend:&lt;/strong&gt; HTML5, CSS3 (Responsive Design)&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;&lt;strong&gt;Backend Logic:&lt;/strong&gt; JavaScript ES6&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                        </span>&lt;li&gt;&lt;strong&gt;Data Viz:&lt;/strong&gt; Chart.js&lt;/li&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/ul&gt;</p>
-<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">        </span>&lt;/main&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
-<p class="p1"><span class="Apple-converted-space">    </span>&lt;script src="script.js"&gt;&lt;/script&gt;</p>
-<p class="p1">&lt;/body&gt;</p>
-<p class="p1">&lt;/html&gt;</p>
+    <div class="container">
+        <aside class="sidebar">
+            <div class="brand-section">
+                <div class="uni-logos">
+                    <img src="logo_facultate.png" alt="Facultate" class="brand-img">
+                    <img src="logo_froo.png" alt="Froo" class="brand-img">
+                </div>
+                <div class="logo">Froo<span>Financial</span></div>
+            </div>
+            <nav class="menu">
+                <div class="nav-item active" onclick="showPage('dashboard')">📊 Dashboard Analiză</div>
+                <div class="nav-item" onclick="showPage('altman')">📉 Model Altman Z-Score</div>
+                <div class="nav-item" onclick="showPage('raport')">📋 Documentație SAD</div>
+            </nav>
+            <div class="sidebar-footer">
+                <p><strong>STUDENT:</strong></p>
+                <p>Gogoreanu Maria Alexia</p>
+                <p>CIG 2026</p>
+            </div>
+        </aside>
+
+        <main class="content">
+            <div id="page-dashboard" class="page active">
+                <header class="header">
+                    <div class="badge">SISTEM DE ASISTARE A DECIZIEI (SAD)</div>
+                    <h1>Managementul Performanței</h1>
+                    <p>Introduceți datele financiare pentru Froo România</p>
+                </header>
+                <section class="glass-card">
+                    <div class="grid-inputs">
+                        <div class="input-field"><label>Cifra Afaceri</label><input type="number" id="ca" value="1250000"></div>
+                        <div class="input-field"><label>Active Totale</label><input type="number" id="at" value="1000000"></div>
+                        <div class="input-field"><label>Active Circulante</label><input type="number" id="ac" value="450000"></div>
+                        <div class="input-field"><label>Stocuri</label><input type="number" id="stoc" value="280000"></div>
+                        <div class="input-field"><label>Datorii Curente</label><input type="number" id="dts" value="210000"></div>
+                        <div class="input-field"><label>Profit Net</label><input type="number" id="pn" value="85000"></div>
+                        <div class="input-field"><label>Capitaluri Proprii</label><input type="number" id="cp" value="400000"></div>
+                        <div class="input-field"><label>Datorii Totale</label><input type="number" id="dt" value="600000"></div>
+                        <div class="input-field"><label>Amortizare</label><input type="number" id="amort" value="15000"></div>
+                    </div>
+                    <button class="btn-primary" onclick="calculeaza()">Generează Analiza Diagnostic</button>
+                </section>
+                <section id="results" class="results-area" style="display:none;">
+                    <div class="kpi-row">
+                        <div class="kpi-card"><span class="kpi-title">Z-Score</span><div class="kpi-value" id="val-altman">0</div></div>
+                        <div class="kpi-card"><span class="kpi-title">CAF (RON)</span><div class="kpi-value" id="val-caf">0</div></div>
+                    </div>
+                    <div class="visual-row">
+                        <div class="glass-card"><table class="data-table"><tbody id="table-content"></tbody></table></div>
+                        <div class="glass-card chart-container"><canvas id="mainChart"></canvas></div>
+                    </div>
+                </section>
+            </div>
+
+            <div id="page-altman" class="page" style="display:none;">
+                <h1>Modelul Altman Z-Score</h1>
+                <div class="glass-card">
+                    <div id="altman-breakdown">Apasă "Calculează" în Dashboard pentru rezultate.</div>
+                </div>
+            </div>
+
+            <div id="page-raport" class="page" style="display:none;">
+                <h1>Documentație SAD</h1>
+                <div class="glass-card">
+                    <p>Sistem informatic dezvoltat pentru analiza diagnostic Froo România.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
