@@ -2,14 +2,17 @@ let myChart = null;
 
 // FUNCȚIA DE NAVIGARE ÎNTRE PAGINI
 function showPage(pageId) {
+    // Ascunde toate paginile
     document.querySelectorAll('.page').forEach(page => {
         page.style.display = 'none';
     });
+    // Arată pagina cerută
     const targetPage = document.getElementById('page-' + pageId);
     if (targetPage) {
         targetPage.style.display = 'block';
     }
     
+    // Update meniu activ (stil vizual)
     document.querySelectorAll('.nav-item').forEach(item => {
         item.classList.remove('active');
         if(item.innerText.toLowerCase().includes(pageId)) {
@@ -20,6 +23,7 @@ function showPage(pageId) {
 
 // FUNCȚIA DE CALCUL ȘI GENERARE REZULTATE
 function calculeaza() {
+    // Preluare date din input-uri
     const d = {
         ca: parseFloat(document.getElementById('ca').value) || 0,
         at: parseFloat(document.getElementById('at').value) || 1,
@@ -45,15 +49,20 @@ function calculeaza() {
     const x5 = d.ca / d.at;
     const z = (0.717*x1 + 0.847*x2 + 3.107*x3 + 0.420*x4 + 0.998*x5).toFixed(2);
 
+    // Update UI - Carduri Sumar
     document.getElementById('val-altman').innerText = z;
-    document.getElementById('val-caf').innerText = caf.toLocaleString() + " RON";
     
+    // Logica Culoare pentru CAF (Roșu dacă e negativ)
+    const cafElement = document.getElementById('val-caf');
+    cafElement.innerText = caf.toLocaleString() + " RON";
+    cafElement.style.color = caf < 0 ? '#ef4444' : '#29b34a';
+    
+    // Update Tabel cu logica pentru Rentabilitate
     const tableBody = document.getElementById('table-content');
     
-    // LOGICA CORECTATĂ PENTRU STATUSUL RENTABILITĂȚII
-    // Dacă ROS este sub 0, afișăm "Pierdere" cu clasa status-alert (roșu)
-    const rosStatusClass = ros > 0 ? 'status-ok' : 'status-alert';
-    const rosStatusText = ros > 0 ? 'Optim' : 'Pierdere';
+    // Verificăm dacă ROS este profit sau pierdere
+    const rosStatusClass = parseFloat(ros) > 0 ? 'status-ok' : 'status-alert';
+    const rosStatusText = parseFloat(ros) > 0 ? 'Optim' : 'Pierdere';
 
     tableBody.innerHTML = `
         <tr>
@@ -73,6 +82,7 @@ function calculeaza() {
         </tr>
     `;
 
+    // Update Pagina Secundară (Altman Breakdown)
     let status = z > 2.9 ? "Zonă Sigură" : (z > 1.23 ? "Zonă Gri" : "Risc Faliment");
     const altmanSection = document.getElementById('altman-breakdown');
     if (altmanSection) {
@@ -89,8 +99,10 @@ function calculeaza() {
         `;
     }
 
+    // Afișează secțiunea de rezultate
     document.getElementById('results').style.display = 'block';
 
+    // Generare/Update Grafic (Chart.js)
     const ctx = document.getElementById('mainChart').getContext('2d');
     if (myChart) myChart.destroy();
     myChart = new Chart(ctx, {
