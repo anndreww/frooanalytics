@@ -34,46 +34,56 @@
             <div id="page-dashboard" class="page active">
                 <header class="header">
                     <div class="badge">SISTEM DE ASISTARE A DECIZIEI (SAD)</div>
-                    <h1>Managementul Performanței</h1>
-                    <p>Introduceți datele financiare pentru Froo România</p>
+                    <h1>Managementul Performanței: Froo România</h1>
+                    <p>Date financiare reale extrase din Bilanțul 2024 (Grupul Żabka)</p>
                 </header>
                 <section class="glass-card">
                     <div class="grid-inputs">
-                        <div class="input-field"><label>Cifra Afaceri</label><input type="number" id="ca" value="1250000"></div>
-                        <div class="input-field"><label>Active Totale</label><input type="number" id="at" value="1000000"></div>
-                        <div class="input-field"><label>Active Circulante</label><input type="number" id="ac" value="450000"></div>
-                        <div class="input-field"><label>Stocuri</label><input type="number" id="stoc" value="280000"></div>
-                        <div class="input-field"><label>Datorii Curente</label><input type="number" id="dts" value="210000"></div>
-                        <div class="input-field"><label>Profit Net</label><input type="number" id="pn" value="85000"></div>
-                        <div class="input-field"><label>Capitaluri Proprii</label><input type="number" id="cp" value="400000"></div>
-                        <div class="input-field"><label>Datorii Totale</label><input type="number" id="dt" value="600000"></div>
-                        <div class="input-field"><label>Amortizare</label><input type="number" id="amort" value="15000"></div>
+                        <div class="input-field"><label>Cifra Afaceri (RON)</label><input type="number" id="ca" value="31187877"></div>
+                        <div class="input-field"><label>Active Totale (RON)</label><input type="number" id="at" value="157827741"></div>
+                        <div class="input-field"><label>Active Circulante (RON)</label><input type="number" id="ac" value="84404291"></div>
+                        <div class="input-field"><label>Stocuri (RON)</label><input type="number" id="stoc" value="15000000"></div>
+                        <div class="input-field"><label>Datorii Curente (RON)</label><input type="number" id="dts" value="141734520"></div>
+                        <div class="input-field"><label>Profit Net / Pierdere (RON)</label><input type="number" id="pn" value="-85471298"></div>
+                        <div class="input-field"><label>Capitaluri Proprii (RON)</label><input type="number" id="cp" value="11784943"></div>
+                        <div class="input-field"><label>Datorii Totale (RON)</label><input type="number" id="dt" value="141734520"></div>
+                        <div class="input-field"><label>Amortizare (RON)</label><input type="number" id="amort" value="2500000"></div>
                     </div>
-                    <button class="btn-primary" onclick="calculeaza()">Generează Analiza Diagnostic</button>
+                    <button class="btn-primary" onclick="calculeaza()">Generează Analiza Diagnostic Reale</button>
                 </section>
+                
                 <section id="results" class="results-area" style="display:none;">
                     <div class="kpi-row">
-                        <div class="kpi-card"><span class="kpi-title">Z-Score</span><div class="kpi-value" id="val-altman">0</div></div>
-                        <div class="kpi-card"><span class="kpi-title">CAF (RON)</span><div class="kpi-value" id="val-caf">0</div></div>
+                        <div class="kpi-card"><span class="kpi-title">Z-Score (Risc Faliment)</span><div class="kpi-value" id="val-altman">0</div></div>
+                        <div class="kpi-card"><span class="kpi-title">CAF (Flux Numerar)</span><div class="kpi-value" id="val-caf">0</div></div>
                     </div>
                     <div class="visual-row">
-                        <div class="glass-card"><table class="data-table"><tbody id="table-content"></tbody></table></div>
-                        <div class="glass-card chart-container"><canvas id="mainChart"></canvas></div>
+                        <div class="glass-card">
+                            <h3>Indicatori Eficiență</h3>
+                            <table class="data-table"><tbody id="table-content"></tbody></table>
+                        </div>
+                        <div class="glass-card chart-container">
+                            <h3>Structură Finanțare</h3>
+                            <canvas id="mainChart"></canvas>
+                        </div>
                     </div>
                 </section>
             </div>
 
             <div id="page-altman" class="page" style="display:none;">
-                <h1>Modelul Altman Z-Score</h1>
+                <h1>Modelul Altman Z-Score (Analiză Grup)</h1>
                 <div class="glass-card">
-                    <div id="altman-breakdown">Apasă "Calculează" în Dashboard pentru rezultate.</div>
+                    <p>Acest modul evaluează probabilitatea de insolvență a sucursalei din România în contextul susținerii financiare de către Żabka Polska.</p>
+                    <div id="altman-breakdown">Apasă "Calculează" în Dashboard pentru a vedea descompunerea factorilor X.</div>
                 </div>
             </div>
 
             <div id="page-raport" class="page" style="display:none;">
-                <h1>Documentație SAD</h1>
+                <h1>Documentație Tehnică SAD</h1>
                 <div class="glass-card">
-                    <p>Sistem informatic dezvoltat pentru analiza diagnostic Froo România.</p>
+                    <h3>Metodologia Sistemului</h3>
+                    <p>Sistemul prelucrează datele brute din Bilanțul și CPP-ul Froo România Retail S.R.L.</p>
+                    <p><strong>Grupul Mamă:</strong> Żabka Polska sp. z o.o.</p>
                 </div>
             </div>
         </main>
