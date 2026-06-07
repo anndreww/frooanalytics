@@ -1,93 +1,321 @@
-<!DOCTYPE html>
-<html lang="ro">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAD FrooFinancial | Maria Alexia</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-    <div class="container">
-        <aside class="sidebar">
-            <div class="brand-section">
-                <div class="uni-logos">
-                    <img src="logo_facultate.png" alt="Facultate" class="brand-img">
-                    <img src="logo_froo.png" alt="Froo" class="brand-img">
-                </div>
-                <div class="logo">Froo<span>Financial</span></div>
-            </div>
-            <nav class="menu">
-                <div class="nav-item active" onclick="showPage('dashboard')">📊 Dashboard Analiză</div>
-                <div class="nav-item" onclick="showPage('altman')">📉 Model Altman Z-Score</div>
-                <div class="nav-item" onclick="showPage('raport')">📋 Documentație SAD</div>
-            </nav>
-            <div class="sidebar-footer">
-                <p><strong>STUDENT:</strong></p>
-                <p>Gogoreanu Maria Alexia</p>
-                <p>CIG 2026</p>
-            </div>
-        </aside>
+/* ==========================================================================
+   SAD FrooFinancial - Premium Styles (Dark Glassmorphism)
+   ========================================================================== */
+:root {
+    --primary: #29b34a;       /* Verde Froo */
+    --primary-hover: #22943d; 
+    --dark-bg: #080b14;       /* Stil premium inchis */
+    --sidebar-bg: #05070a;   
+    --glass-card: rgba(17, 22, 37, 0.6); 
+    --border: rgba(255, 255, 255, 0.06); 
+    --text-main: #f1f5f9;     
+    --text-muted: #94a3b8;    
+    --danger: #ef4444;        
+}
 
-        <main class="content">
-            <div id="page-dashboard" class="page active">
-                <header class="header">
-                    <div class="badge">SISTEM DE ASISTARE A DECIZIEI (SAD)</div>
-                    <h1>Managementul Performanței: Froo România</h1>
-                    <p>Date financiare reale extrase din Bilanțul 2024 (Grupul Żabka)</p>
-                </header>
-                <section class="glass-card">
-                    <div class="grid-inputs">
-                        <div class="input-field"><label>Cifra Afaceri (RON)</label><input type="number" id="ca" value="31187877"></div>
-                        <div class="input-field"><label>Active Totale (RON)</label><input type="number" id="at" value="157827741"></div>
-                        <div class="input-field"><label>Active Circulante (RON)</label><input type="number" id="ac" value="84404291"></div>
-                        <div class="input-field"><label>Stocuri (RON)</label><input type="number" id="stoc" value="15000000"></div>
-                        <div class="input-field"><label>Datorii Curente (RON)</label><input type="number" id="dts" value="141734520"></div>
-                        <div class="input-field"><label>Profit Net / Pierdere (RON)</label><input type="number" id="pn" value="-85471298"></div>
-                        <div class="input-field"><label>Capitaluri Proprii (RON)</label><input type="number" id="cp" value="11784943"></div>
-                        <div class="input-field"><label>Datorii Totale (RON)</label><input type="number" id="dt" value="141734520"></div>
-                        <div class="input-field"><label>Amortizare (RON)</label><input type="number" id="amort" value="2500000"></div>
-                    </div>
-                    <button class="btn-primary" onclick="calculeaza()">Generează Analiza Diagnostic Reale</button>
-                </section>
-                
-                <section id="results" class="results-area" style="display:none;">
-                    <div class="kpi-row">
-                        <div class="kpi-card"><span class="kpi-title">Z-Score (Risc Faliment)</span><div class="kpi-value" id="val-altman">0</div></div>
-                        <div class="kpi-card"><span class="kpi-title">CAF (Flux Numerar)</span><div class="kpi-value" id="val-caf">0</div></div>
-                    </div>
-                    <div class="visual-row">
-                        <div class="glass-card">
-                            <h3>Indicatori Eficiență</h3>
-                            <table class="data-table"><tbody id="table-content"></tbody></table>
-                        </div>
-                        <div class="glass-card chart-container">
-                            <h3>Structură Finanțare</h3>
-                            <canvas id="mainChart"></canvas>
-                        </div>
-                    </div>
-                </section>
-            </div>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-            <div id="page-altman" class="page" style="display:none;">
-                <h1>Modelul Altman Z-Score (Analiză Grup)</h1>
-                <div class="glass-card">
-                    <p>Acest modul evaluează probabilitatea de insolvență a sucursalei din România în contextul susținerii financiare de către Żabka Polska.</p>
-                    <div id="altman-breakdown">Apasă "Calculează" în Dashboard pentru a vedea descompunerea factorilor X.</div>
-                </div>
-            </div>
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--text-main);
+    min-height: 100vh;
+    background-image: radial-gradient(circle at top right, rgba(41, 179, 74, 0.05), transparent 50%);
+    overflow-x: hidden;
+}
 
-            <div id="page-raport" class="page" style="display:none;">
-                <h1>Documentație Tehnică SAD</h1>
-                <div class="glass-card">
-                    <h3>Metodologia Sistemului</h3>
-                    <p>Sistemul prelucrează datele brute din Bilanțul și CPP-ul Froo România Retail S.R.L.</p>
-                    <p><strong>Grupul Mamă:</strong> Żabka Polska sp. z o.o.</p>
-                </div>
-            </div>
-        </main>
-    </div>
-    <script src="script.js"></script>
-</body>
-</html>
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar Fixat la Stânga */
+.sidebar {
+    width: 300px;
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--border);
+    padding: 2.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100vh;
+    z-index: 100;
+}
+
+.brand-section {
+    margin-bottom: 3rem;
+}
+
+.uni-logos {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.brand-img {
+    height: 35px;
+    width: auto;
+    object-fit: contain;
+}
+
+.logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--primary);
+    letter-spacing: -0.5px;
+}
+
+.logo span {
+    color: var(--text-main);
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-grow: 1;
+}
+
+.nav-item {
+    padding: 12px 16px;
+    border-radius: 8px;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.nav-item:hover {
+    color: var(--text-main);
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+.nav-item.active {
+    background-color: rgba(41, 179, 74, 0.1);
+    color: var(--primary);
+}
+
+.sidebar-footer {
+    border-top: 1px solid var(--border);
+    padding-top: 15px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+/* Conținutul din Dreapta */
+.content {
+    flex: 1;
+    padding: 3rem;
+    margin-left: 300px; /* Previne suprapunerea peste sidebar */
+    max-width: 1200px;
+}
+
+.header {
+    margin-bottom: 2rem;
+}
+
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background-color: rgba(41, 179, 74, 0.08);
+    border: 1px solid rgba(41, 179, 74, 0.15);
+    color: var(--primary);
+    border-radius: 20px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.header h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+
+.header p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.glass-card {
+    background: var(--glass-card);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Grid-ul Inputurilor */
+.grid-inputs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+}
+
+.input-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.input-field label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.input-field input {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid var(--border);
+    padding: 10px 14px;
+    border-radius: 6px;
+    color: var(--text-main);
+    font-size: 0.95rem;
+    font-family: inherit;
+}
+
+.input-field input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.btn-primary {
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 14px;
+    background-color: var(--primary);
+    border: none;
+    border-radius: 8px;
+    color: #05070a;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+/* Rezultate și KPI-uri */
+.results-area {
+    margin-top: 1.5rem;
+}
+
+.kpi-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 1.5rem;
+}
+
+.kpi-card {
+    background: var(--glass-card);
+    border: 1px solid var(--border);
+    padding: 1.25rem 1.5rem;
+    border-radius: 12px;
+}
+
+.kpi-title {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.kpi-value {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-top: 4px;
+}
+
+/* Repartizare Vizuală Rezultate (Tabel + Grafic) */
+.visual-row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 16px;
+}
+
+.visual-row h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.data-table td {
+    padding: 12px 4px;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+}
+
+.data-table tr:last-child td {
+    border-bottom: none;
+}
+
+.data-table td:nth-child(2) {
+    font-weight: 700;
+    text-align: right;
+}
+
+.data-table td:nth-child(3) {
+    text-align: right;
+}
+
+/* Badge Status Indicatori */
+.status-ok {
+    color: var(--primary);
+    background: rgba(41, 179, 74, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.status-alert {
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+/* Canvas Box */
+.canvas-holder {
+    position: relative;
+    height: 220px;
+    width: 100%;
+}
+
+/* Paginație simplă controlată din clase */
+.page {
+    display: none;
+}
+.page.active {
+    display: block;
+}
+
+/* Responsivitate pentru ecrane mici */
+@media (max-width: 992px) {
+    .visual-row { grid-template-columns: 1fr; }
+    .kpi-row { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+    .sidebar { position: relative; width: 100%; height: auto; }
+    .content { margin-left: 0; padding: 1.5rem; }
+}
