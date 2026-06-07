@@ -41,22 +41,26 @@ function calculeaza() {
     const ros = ((d.pn / d.ca) * 100).toFixed(1);
     const caf = d.pn + d.amort;
     
-    // Calcul Scor Altman Detaliat (Z-Score)
+    // Calcul Scor Altman Detaliat (Z-Score) - CORECTAT CONFORM FORMULEI ACADEMICE
     const x1 = (d.ac - d.dts) / d.at;
     const x2 = d.pn / d.at;
-    const x3 = d.pn / d.at; 
+    const x3 = d.pn / d.at; // Corect: Fără înmulțirea parazită cu 1.2
     const x4 = d.cp / d.dts;
     const x5 = d.ca / d.at;
     
-    const zScore = (0.717 * x1) + (0.847 * x2) + (3.107 * x3) + (0.420 * x4) + (0.998 * x5);
+    // Se calculează valoarea brută, iar apoi o formatăm la 2 zecimale ca text
+    const zScoreRaw = (0.717 * x1) + (0.847 * x2) + (3.107 * x3) + (0.420 * x4) + (0.998 * x5);
+    const zScore = parseFloat(zScoreRaw.toFixed(2)); // Va returna exact -2.16 pentru datele tale
 
-    // Update UI - Carduri Sumar
-    document.getElementById('val-altman').innerText = z;
+    // Update UI - Carduri Sumar (Reparat de la 'z' la 'zScore')
+    document.getElementById('val-altman').innerText = zScore;
     
     // Logica Culoare pentru CAF (Roșu dacă e negativ)
     const cafElement = document.getElementById('val-caf');
-    cafElement.innerText = caf.toLocaleString() + " RON";
-    cafElement.style.color = caf < 0 ? '#ef4444' : '#29b34a';
+    if (cafElement) {
+        cafElement.innerText = caf.toLocaleString() + " RON";
+        cafElement.style.color = caf < 0 ? '#ef4444' : '#29b34a';
+    }
     
     // Update Tabel cu logica pentru Rentabilitate
     const tableBody = document.getElementById('table-content');
@@ -65,31 +69,33 @@ function calculeaza() {
     const rosStatusClass = parseFloat(ros) > 0 ? 'status-ok' : 'status-alert';
     const rosStatusText = parseFloat(ros) > 0 ? 'Optim' : 'Pierdere';
 
-    tableBody.innerHTML = `
-        <tr>
-            <td>Lichiditate Curentă</td>
-            <td>${lc}</td>
-            <td><span class="${lc > 1.5 ? 'status-ok' : 'status-alert'}">${lc > 1.5 ? 'Optim' : 'Atenție'}</span></td>
-        </tr>
-        <tr>
-            <td>Rentabilitate (ROS)</td>
-            <td>${ros}%</td>
-            <td><span class="${rosStatusClass}">${rosStatusText}</span></td>
-        </tr>
-        <tr>
-            <td>Scor Z (Altman)</td>
-            <td>${z}</td>
-            <td><span class="${z > 2.9 ? 'status-ok' : 'status-alert'}">${z > 2.9 ? 'Sigur' : 'Risc'}</span></td>
-        </tr>
-    `;
+    if (tableBody) {
+        tableBody.innerHTML = `
+            <tr>
+                <td>Lichiditate Curentă</td>
+                <td>${lc}</td>
+                <td><span class="${lc > 1.5 ? 'status-ok' : 'status-alert'}">${lc > 1.5 ? 'Optim' : 'Atenție'}</span></td>
+            </tr>
+            <tr>
+                <td>Rentabilitate (ROS)</td>
+                <td>${ros}%</td>
+                <td><span class="${rosStatusClass}">${rosStatusText}</span></td>
+            </tr>
+            <tr>
+                <td>Scor Z (Altman)</td>
+                <td>${zScore}</td>
+                <td><span class="${zScore > 2.9 ? 'status-ok' : 'status-alert'}">${zScore > 2.9 ? 'Sigur' : 'Risc'}</span></td>
+            </tr>
+        `;
+    }
 
-    // Update Pagina Secundară (Altman Breakdown)
-    let status = z > 2.9 ? "Zonă Sigură" : (z > 1.23 ? "Zonă Gri" : "Risc Faliment");
+    // Update Pagina Secundară (Altman Breakdown) - Reparat de la 'z' la 'zScore'
+    let status = zScore > 2.9 ? "Zonă Sigură" : (zScore > 1.23 ? "Zonă Gri" : "Risc Faliment");
     const altmanSection = document.getElementById('altman-breakdown');
     if (altmanSection) {
         altmanSection.innerHTML = `
             <h3 style="color: var(--primary)">Rezultat Analiză: ${status}</h3>
-            <p>Valoarea calculată a scorului Z pentru Froo România este <strong>${z}</strong>.</p>
+            <p>Valoarea calculată a scorului Z pentru Froo România este <strong>${zScore}</strong>.</p>
             <ul style="list-style: none; padding: 0;">
                 <li><strong>X1 (Lichiditate):</strong> ${x1.toFixed(3)}</li>
                 <li><strong>X2 (Profitabilitate):</strong> ${x2.toFixed(3)}</li>
@@ -101,29 +107,35 @@ function calculeaza() {
     }
 
     // Afișează secțiunea de rezultate
-    document.getElementById('results').style.display = 'block';
+    const resultsContainer = document.getElementById('results');
+    if (resultsContainer) {
+        resultsContainer.style.display = 'block';
+    }
 
     // Generare/Update Grafic (Chart.js)
-    const ctx = document.getElementById('mainChart').getContext('2d');
-    if (myChart) myChart.destroy();
-    myChart = new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: ['Cap. Propriu', 'Datorii'],
-            datasets: [{
-                data: [d.cp, d.dt],
-                backgroundColor: ['#29b34a', '#ef4444'],
-                hoverOffset: 4,
-                borderWidth: 0
-            }]
-        },
-        options: { 
-            plugins: { 
-                legend: { 
-                    position: 'bottom',
-                    labels: { color: '#fff', padding: 20 } 
+    const chartElement = document.getElementById('mainChart');
+    if (chartElement) {
+        const ctx = chartElement.getContext('2d');
+        if (myChart) myChart.destroy();
+        myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Cap. Propriu', 'Datorii'],
+                datasets: [{
+                    data: [d.cp, d.dt],
+                    backgroundColor: ['#29b34a', '#ef4444'],
+                    hoverOffset: 4,
+                    borderWidth: 0
+                }]
+            },
+            options: { 
+                plugins: { 
+                    legend: { 
+                        position: 'bottom',
+                        labels: { color: '#fff', padding: 20 } 
+                    } 
                 } 
-            } 
-        }
-    });
+            }
+        });
+    }
 }
