@@ -44,10 +44,11 @@ function calculeaza() {
     // Calcul Scor Altman Detaliat (Z-Score)
     const x1 = (d.ac - d.dts) / d.at;
     const x2 = d.pn / d.at;
-    const x3 = (d.pn * 1.2) / d.at;
-    const x4 = d.cp / d.dt;
+    const x3 = d.pn / d.at; 
+    const x4 = d.cp / d.dts;
     const x5 = d.ca / d.at;
-    const z = (0.717*x1 + 0.847*x2 + 3.107*x3 + 0.420*x4 + 0.998*x5).toFixed(2);
+    
+    const zScore = (0.717 * x1) + (0.847 * x2) + (3.107 * x3) + (0.420 * x4) + (0.998 * x5);
 
     // Update UI - Carduri Sumar
     document.getElementById('val-altman').innerText = z;
